@@ -26,23 +26,18 @@ class PersonRepositoryTest {
         Person person = new Person(111, "Sarthak", "PCMC");
         // Save the person in the repository
         personRepository.save(person);
-
         // Check if the person exists by ID
         Boolean actualResult = personRepository.isPersonExistsById(111);
-
         // Assert that the result is true
         assertThat(actualResult).isTrue();
     }
 
-
-
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         System.out.println("tearing down");
         personRepository.deleteAll();
 
     }
-
     @BeforeEach
     void setUp(){
         System.out.println("setting up");
