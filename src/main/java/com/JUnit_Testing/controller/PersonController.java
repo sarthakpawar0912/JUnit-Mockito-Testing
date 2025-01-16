@@ -9,12 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class PersonController {
 
-
-
     @Autowired
     private PersonService personService;
-
-
 
     @GetMapping("/students")
     public ResponseEntity<?> getAllPersons() {
