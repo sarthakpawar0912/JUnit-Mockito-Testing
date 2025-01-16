@@ -6,15 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
+
     @Autowired
-    private  PersonRepository personRepository;
+    private PersonRepository personRepository;
+
     public List<Person> getAllPerson() {
         return this.personRepository.findAll();
     }
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+
+    public Person getPersonById(Integer personId) {
+        Optional<Person> person = personRepository.findById(personId);
+        return person.orElse(null);
+    }
+
+    public Person addPerson(Person person) {
+        return personRepository.save(person);
     }
 }
